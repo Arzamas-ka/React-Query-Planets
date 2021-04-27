@@ -1,25 +1,22 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { QueryClient, QueryClientProvider } from 'react-query'
+// import { ReactQueryDevtools } from 'react-query-devtools';
 
-function App() {
+import Planets from './PlanetsApi';
+
+const queryClient = new QueryClient();
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+    <QueryClientProvider client={queryClient}>
+      <div style={{ margin: '10px', }}>
+        <h3>List of Planets</h3>
+        <Planets />
+      </div>
+
+      {/* <ReactQueryDevtools initialIsOpen={false} />*/}
+    </QueryClientProvider>
+  )
+};
 
 export default App;
